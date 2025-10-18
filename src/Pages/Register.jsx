@@ -1,13 +1,19 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, Links } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 
 
 const Register = () => {
     const {createUser,setUser} = use(AuthContext)
+    const [nameError,setNameError] = useState("")
     const handleRegister = e => {
         e.preventDefault();
         const name = e.target.name.value;
+        if(name.length<5){
+            return setNameError('Name should be at least 5 word')
+        }else{
+            setNameError("")
+        }
         const photoUrl = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -16,7 +22,7 @@ const Register = () => {
             setUser(res.user)
         })
         .catch(e=>{
-            console.log(e.message)
+          console.log(e.message)
         })
 
     }
@@ -34,7 +40,12 @@ const Register = () => {
                             className="input"
                             required
                             placeholder="Name" />
+                            {
+                                nameError&&<p className='text-xs text-error'>{nameError}</p>
+                            }
+                            
                         {/* photo url */}
+        
                         <label className="label">Photo URL</label>
                         <input type="text"
                             name='photo'
