@@ -27,7 +27,7 @@ const CategoryNews = () => {
     }, [data, id])
 
 
-    console.log(id)
+    // console.log(id)
     return (
         <div>
         <h2 className='font-bold mb-5'>Total <span className='text-secondary'>

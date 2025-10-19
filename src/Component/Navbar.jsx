@@ -9,20 +9,24 @@ const Navbar = () => {
         Logout().then(()=>{
             alert('logout success')
         }).catch(e=>{
-          console.log(  e.message)
+        //   console.log(  e.message)
         })
 
     }
     return (
      <div className='flex justify-between items-center'>
-   <div>{user&& <h3>{user.email}</h3>}</div>
+   <div>{user&& <h3>{user.email}</h3>
+ 
+   }
+                    </div>
 <div className='nav flex gap-5 text-accent'>
     <NavLink to='/'>Home</NavLink>
     <NavLink to='/about'>About</NavLink>
     <NavLink to='/carrer'>Carrer</NavLink>
 </div>
 <div className='login flex items-center gap-5 '>
-    <img src={users} alt="" />
+    <img className='w-12 rounded-full'
+     src={`${user?user.photoURL:users}`} alt="" />
     {
         user?<button onClick={handleLogout} className='btn btn-primary px-10'>Logout</button>:<Link to='/auth/login' 
         className='btn btn-primary px-10'>Login</Link>

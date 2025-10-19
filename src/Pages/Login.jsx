@@ -9,14 +9,15 @@ const Login = () => {
 
   const location = useLocation()
   const navigate = useNavigate()
-  console.log(location)
+  // console.log(location)
   const handleLogin =(e)=>{
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     Login(email,password)
-    .then(res=>{
-      console.log(res.user)
+    .then(()=>
+    {
+      // console.log(res.user)
       navigate(`${location.state?location.state:'/'}`)
       alert('Login success')
     })
