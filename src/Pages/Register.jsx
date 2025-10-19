@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link, Links, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 
 const Register = () => {
@@ -21,10 +22,13 @@ const Register = () => {
         createUser(email,password)
         .then(res=>{
             const user = res.user;
+
             updateUser({displayName:name,photoURL:photoUrl})
+           
             .then(()=>{
                 setUser({...user,displayName:name,photoURL:photoUrl})
                 navigate('/')
+                 toast.success('Registration Successfully')
             })
             .catch(error=>{
                 console.log(error.message)

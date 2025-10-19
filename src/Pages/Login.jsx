@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
     {
       // console.log(res.user)
       navigate(`${location.state?location.state:'/'}`)
-      alert('Login success')
+      toast.success('login Success')
     })
     .catch(e=>{
       const error = e.code;
